@@ -13,6 +13,6 @@
     </head>
     <body>
         <h1>There is an existing student with this ID</h1>
-        <jsp:include page="studenttable" flush="true"/>
+        <jsp:include page="studenttable.jsp" flush="flase"/>
     </body>
 </html>

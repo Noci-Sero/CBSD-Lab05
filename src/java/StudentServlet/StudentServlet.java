@@ -29,17 +29,21 @@ public class StudentServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
-        Integer id = Integer.valueOf(request.getParameter("id"));
-        if (StudentTable.findStudentById(id) == null) {
+
+        Integer id = Integer.parseInt(request.getParameter("id"));
+        System.out.println(request.getParameter("id") + " | " + request.getParameter("name"));
+        Student ref = StudentTable.findStudentById(id);
+
+        if (ref == null) {
+            System.out.println("Is null");
             Student pupil = new Student();
             pupil.setStudentid(id);
-            pupil.setStudentname(request.getParameter("studentname"));
+            pupil.setStudentname(request.getParameter("name"));
             pupil.setGpa(Double.valueOf(request.getParameter("gpa")));
             StudentTable.insertStudent(pupil);
             request.getRequestDispatcher("/addstudent.jsp").forward(request, response);
         } else {
-            request.getRequestDispatcher("/error.jsp");
+            request.getRequestDispatcher("/error.jsp").forward(request, response);
         }
     }
 

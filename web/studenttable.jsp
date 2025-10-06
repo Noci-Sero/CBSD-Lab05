@@ -14,8 +14,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <%! List<Student> pupilList = StudentTable.findAllStudent(); %>
-        
+        <%! List<Student> pupilList;%>
         <table border="1">
             <thead>
                 <tr>
@@ -26,13 +25,15 @@
             </thead>
             <tbody>
                 <%
+                    pupilList = StudentTable.findAllStudent();
+                    System.out.println(pupilList.size());
                     for (int i = 0; i < pupilList.size(); i++) {
                         out.println("<tr>");
                         out.println("<td>" + pupilList.get(i).getStudentid() + "</td>");
-                        out.println("<td>" + pupilList.get(i).getStudentname()+ "</td>");
-                        out.println("<td>" + pupilList.get(i).getGpa()+ "</td>");
+                        out.println("<td>" + pupilList.get(i).getStudentname() + "</td>");
+                        out.println("<td>" + pupilList.get(i).getGpa() + "</td>");
                         out.println("</tr>");
-                    } 
+                    }
                 %>
             </tbody>
         </table>

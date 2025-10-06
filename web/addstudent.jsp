@@ -16,6 +16,6 @@
         <h1>Name: <%=request.getParameter("name")%> </h1>
         <h1>GPA: <%=request.getParameter("gpa")%> </h1>
         <h1>is added</h1>
-        <jsp:include page="studenttable" flush="true"/>
+        <jsp:include page="studenttable.jsp" flush="false"/>
     </body>
 </html>
